@@ -8,10 +8,10 @@ server:
       force: true
     
 spring:
-#  mvc:
-#    view:
-#      prefix: /WEB-INF/views/
-#      suffix: .jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
       
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,13 +22,15 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update #테이블을 새로 만들겠다. 기존의 테이블이 있어도 새로만든다.(실행할때마다)
+      #그러므로 처음에만 create하고, 그다음에 update로 바꿔야한다.
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-      use-new-id-generator-mappings: false
-    show-sql: true
+        #테이블 만들때 변수이름 그대로 DB테이블에 넣어준다.
+      use-new-id-generator-mappings: false #jpa의 기본 전략을 따라간다
+    show-sql: true #테이블 정보 보여줘라
     properties:
-      hibernate.format_sql: true
+      hibernate.format_sql: true #테이블 정보 보여줄때 이쁘게 정렬해서 보여줘라
 
   jackson:
     serialization:

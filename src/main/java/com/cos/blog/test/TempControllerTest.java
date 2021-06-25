@@ -13,4 +13,8 @@ public class TempControllerTest {
 		//리턴명 : /home.html
 		return "/home.html";
 	}
+	@GetMapping("/temp/jsp")
+	public String tempJsp() {
+		return "test";
+	}
 }
