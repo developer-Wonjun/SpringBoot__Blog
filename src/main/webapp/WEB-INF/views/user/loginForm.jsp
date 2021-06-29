@@ -5,13 +5,13 @@
 <div class="container">
 	<form action="/action_page.php">
 		<div class="form-group">
-			<label for="username">Username:</label> <input type="text" class="form-control" placeholder="Enter username" id="username">
+			<label for="username">아이디</label> <input type="text" class="form-control" placeholder="아이디를 입력하세요." id="username">
 		</div>
 		<div class="form-group">
-			<label for="password">Password</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+			<label for="password">비밀번호</label> <input type="password" class="form-control" placeholder="비밀번호를 입력하세요." id="password">
 		</div>
 		<div class="form-group form-check">
-			<label class="form-check-label"> <input class="form-check-input" type="checkbox"> Remember me
+			<label class="form-check-label"> <input class="form-check-input" type="checkbox"> 계정 정보 저장
 			</label>
 		</div>
 		<button type="submit" class="btn btn-primary">로그인</button>
