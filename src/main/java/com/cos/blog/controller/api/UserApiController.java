@@ -21,7 +21,7 @@ public class UserApiController {
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		System.out.println("UserApiController : save 호출");
 		user.setRole(RoleType.USER);
-		int result = userService.회원가입(user);
-		return new ResponseDto<Integer>(HttpStatus.OK, result); //리턴값이 js 폴더의 성공시 함수 값으로 들어감
+		userService.회원가입(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //리턴값이 js 폴더의 성공시 함수 값으로 들어감
 	}
 }
