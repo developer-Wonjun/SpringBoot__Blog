@@ -32,7 +32,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.authenticated() //인증이필요함.
 			.and()
 				.formLogin()
-				.loginPage("/auth/loginForm");
+				.loginPage("/auth/loginForm")
+				.loginProcessingUrl("/auth/loginProc") //스프링 시큐리티가 해당 주소로 오는 로그인을 가로채서 대신 로그인해줌
+				.defaultSuccessUrl("/");
 	}
 
 }
