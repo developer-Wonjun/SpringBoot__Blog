@@ -1,10 +1,13 @@
 package com.cos.blog.service;
 
-import javax.transaction.Transactional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 
@@ -14,16 +17,18 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	@Autowired
+	private BCryptPasswordEncoder encoder; //객체가 DI가 돼서 주입이 된다.
+	
 	@Transactional
-	public int 회원가입(User user) {
-		try {
-			userRepository.save(user);
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("UserService : 회원가입():" + e.getMessage());
-		}
-		return -1;
-		
+	public void 회원가입(User user) {
+		String rawPassword = user.getPassword(); // 패스워드 원문
+		String encPassword = encoder.encode(rawPassword); //비밀번호 해쉬 완료
+		user.setPassword(encPassword);
+		user.setRole(RoleType.USER);
+		userRepository.save(user);
 	}
+
+	
+	
 }
