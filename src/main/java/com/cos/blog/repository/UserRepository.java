@@ -1,16 +1,19 @@
 package com.cos.blog.repository;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.cos.blog.model.User;
+import java.util.Optional;
 
 
 //DAO
 //자동으로 bean등록이 된다.
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
-
+	//SELECT * FROM user WHERE username = 1?;
+	Optional<User> findByUsername(String username);
 	
 }
 //JPA Naming 쿼리전략
